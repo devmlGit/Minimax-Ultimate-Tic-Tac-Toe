@@ -28,7 +28,7 @@ def boardState(board):
         lin = True
         col = True
         for j in range(1,3):
-            lin = lin and board[i][j] == board[i][j-1] != 0 != 2
+            lin = lin and board[i][j] == board[i][j-1] != 0
             col = col and board[j][i] == board[j-1][i] != 0
         win = win or lin or col
     
@@ -109,7 +109,7 @@ def minimax(depth, alpha, beta, player):
     # if game over or maxdepth is reached
     if depth == maxDepth or boardState(bigGrid) != 0:
         #drawGrid(player)
-        return evalGamePos()    # return teh heuristic evaluation of the pos
+        return evalGamePos()    # return the  heuristic evaluation of the pos
 
     value = 0
     bestMove = [0,0,0,0]
@@ -313,11 +313,11 @@ def game():
             else:
                 humanPlayer(-1)
         
+        # change the role
+        player = -player
         drawGrid(player)
         print("Heuristic (higher scores are best for player O, lower scores are best for player X) :", evalGamePos(),"\n")
 
-        # change the role
-        player = -player
 
     if boardState(bigGrid) == 1:
         print(design(-player)+ " won !")
